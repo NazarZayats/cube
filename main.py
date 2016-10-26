@@ -10,7 +10,6 @@ from wx.lib.newevent import NewEvent
 from device import CubeDevice
 
 
-#==============================================================================
 class CubeApp(wx.App):
     def __init__(self):
         super(CubeApp, self).__init__()
@@ -25,7 +24,6 @@ class CubeApp(wx.App):
         self.MainLoop()
         self.device.disconnect()
 
-#==============================================================================
 
 class TaskBarIcon(wx.TaskBarIcon):
     def __init__(self):
@@ -53,7 +51,6 @@ class TaskBarIcon(wx.TaskBarIcon):
     def OnExit(self, event):
         wx.GetApp().GetTopWindow().Destroy()
 
-#==============================================================================
 class ActionPanel(wx.Panel):
     def __init__(self, parent, device):
         super(ActionPanel, self).__init__(parent)
@@ -106,7 +103,6 @@ class ActionPanel(wx.Panel):
         self.ShowPanel(self.mode_combobox.GetValue())
 
 
-#==============================================================================
 class MailPanel(wx.Panel):
     def __init__(self, parent, mode, show_imap_host_port):
         super(MailPanel, self).__init__(parent)
@@ -223,7 +219,6 @@ class MailPanel(wx.Panel):
         self.status_label.SetLabel(event.status)
 
 
-#==============================================================================
 class SlackPanel(MailPanel):
 
     def CreateCredentialsUI(self):
@@ -234,7 +229,6 @@ class SlackPanel(MailPanel):
         return res
 
 
-#==============================================================================
 class ManualControlPanel(wx.Panel):
     def __init__(self, parent, device):
         super(ManualControlPanel, self).__init__(parent)
@@ -266,7 +260,6 @@ class ManualControlPanel(wx.Panel):
         pass
 
 
-#==============================================================================
 class LongTaskPanel(wx.Panel):
     def __init__(self, parent, text):
         super(LongTaskPanel, self).__init__(parent)
@@ -296,7 +289,7 @@ class LongTaskPanel(wx.Panel):
         panel.SetSizer(hbox)
         self.SetSizer(vbox)
 
-#==============================================================================
+
 PortSelectedEvent, EVT_PORT_SELECTED = NewEvent()
 
 class PortSelectionPanel(wx.Panel):
@@ -333,7 +326,7 @@ class PortSelectionPanel(wx.Panel):
         self.ok_button.Enable(self.listbox.GetSelection() != wx.NOT_FOUND)
 
 
-#==============================================================================
+
 SearchAgainEvent, EVT_SEARCH_AGAIN = NewEvent()
 
 class PortNotFoundPanel(wx.Panel):
@@ -361,7 +354,7 @@ class PortNotFoundPanel(wx.Panel):
         self.SetSizer(vbox)
 
 
-#==============================================================================
+
 DiscoveredEvent, EVT_DISCOVERED = NewEvent()
 ConnectedEvent, EVT_CONNECTED = NewEvent()
 
